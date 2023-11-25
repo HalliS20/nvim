@@ -1,0 +1,3 @@
+return {
+  "daltonmenezes/aura-theme",
+}
