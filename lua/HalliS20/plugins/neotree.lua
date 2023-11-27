@@ -8,7 +8,7 @@ return {
     -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
   },
   --------------------- KEYMAPS---------------------
-  vim.keymap.set("n", "<Leader>ee", "<Cmd>Neotree toggle show<CR>"),
+  vim.keymap.set("n", "<Leader>ee", "<Cmd>Neotree toggle<CR>"),
   vim.keymap.set("n", "<Leader>ef", "<Cmd>Neotree focus<CR>"),
   ------------------------------------------------------
   config = require("HalliS20.plugins.Configs.neo-tree-cfg"),

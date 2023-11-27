@@ -4,16 +4,26 @@ return {
   event = { "BufReadPre", "BufNewFile" }, -- to disable, comment this out
   config = function()
     local lint = require("lint")
-
+    ----------------------- js linters -----------------------
+    local jslinter = {}
+    jslinter.extrajs = {
+      "eslint",
+      "eslint_d",
+    }
+    jslinter.mainjs = {
+      "biomejs",
+    }
+    -----------------------------------------------------------
     lint.linters_by_ft = {
       css = { "stylelint" },
-      -- html = { "eslint_d" },
-      -- javascript = { "eslint_d" },
-      -- typescript = { "eslint_d" },
-      -- javascriptreact = { "eslint_d" },
-      -- typescriptreact = { "eslint_d" },
-      -- svelte = { "eslint_d" },
+      html = { "eslint" },
+      javascript = jslinter.mainjs,
+      typescript = { "eslint" },
+      javascriptreact = { "eslint" },
+      typescriptreact = { "eslint" },
+      svelte = { "eslint" },
       python = { "pylint" },
+      json = { "eslint" },
     }
 
     local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })

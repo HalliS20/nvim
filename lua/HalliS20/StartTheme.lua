@@ -12,22 +12,20 @@ local scheme = schemes.h
 vim.cmd("colorscheme " .. scheme)
 
 --------------------------- Some cute theme fixes
-if scheme ~= "midnight" then
-  --------------------------- fold column bg color ---------------------------
+--------------------------- fold column bg color ---------------------------
 
-  vim.cmd("autocmd VimEnter * hi FoldColumn guibg=bg")
-  vim.cmd("autocmd ColorScheme * hi FoldColumn guibg=bg")
+vim.cmd("autocmd VimEnter * hi FoldColumn guibg=bg")
+vim.cmd("autocmd ColorScheme * hi FoldColumn guibg=bg")
 
-  ------------------Set Vertical Split border color------------------
-  vim.cmd("set fillchars-=vert:\\|")
-  vim.cmd("set winblend=0")
+------------------Set Vertical Split border color------------------
+vim.cmd("set fillchars-=vert:\\|")
+vim.cmd("set winblend=0")
 
-  -- Set the vertical split line to the same color as the background
-  function SetVertSplitHighlight()
-    vim.cmd("highlight VertSplit guifg=bg guibg=bg")
-  end
-
-  ---------------------- Un comment code below to remove vertical split line ----------------------
-  vim.cmd("autocmd VimEnter * lua SetVertSplitHighlight()")
-  vim.cmd("autocmd ColorScheme * lua SetVertSplitHighlight()")
+-- Set the vertical split line to the same color as the background
+function SetVertSplitHighlight()
+  vim.cmd("highlight VertSplit guifg=bg guibg=bg")
 end
+
+---------------------- Un comment code below to remove vertical split line ----------------------
+vim.cmd("autocmd VimEnter * lua SetVertSplitHighlight()")
+vim.cmd("autocmd ColorScheme * lua SetVertSplitHighlight()")

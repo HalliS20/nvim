@@ -6,14 +6,14 @@ return {
     local conform = require("conform")
     conform.setup({
       formatters_by_ft = {
-        javascript = { "prettier" },
+        javascript = { "prettier", "eslint", "prettierd" },
         typescript = { "prettier" },
         javascriptreact = { "prettier" },
         typescriptreact = { "prettier" },
         svelte = { "prettier" },
         css = { "prettier" },
         html = { "prettier" },
-        json = { "prettier" },
+        json = { "prettier", "prettierd", "eslint" },
         yaml = { "prettier" },
         markdown = { "prettier" },
         graphql = { "prettier" },

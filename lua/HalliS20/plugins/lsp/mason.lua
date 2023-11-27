@@ -37,6 +37,7 @@ return {
         "emmet_ls",
         "prismals",
         "pyright",
+        "eslintls",
       },
       -- auto-install configured servers (with lspconfig)
       automatic_installation = true, -- not the same as ensure_installed
@@ -49,6 +50,7 @@ return {
         "isort", -- python formatter
         "black", -- python formatter
         "pylint", -- python linter
+        "quick_lint_js", -- js linter
         "eslint_d", -- js linter
         "stylelint", -- css linter
         "eslint", -- js linter

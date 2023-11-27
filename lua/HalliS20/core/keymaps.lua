@@ -41,3 +41,7 @@ keymap.set("n", "x", '"_x')
 
 -----------------------------Better paste-------------------------------------
 vim.api.nvim_set_keymap("v", "p", '"_dP', { noremap = true })
+
+------------------------- Write all and quit all -----------------------------
+vim.cmd("command! -nargs=0 WAQ wa | qa")
+vim.cmd("cabbrev waq WAQ")
