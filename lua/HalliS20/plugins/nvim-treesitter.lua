@@ -25,6 +25,8 @@ return {
         -- ensure these language parsers are installed
         ensure_installed = {
           "json",
+          "json5",
+          "jsdoc",
           "javascript",
           "typescript",
           "tsx",
@@ -42,6 +44,7 @@ return {
           "dockerfile",
           "gitignore",
           "query",
+          "python",
         },
         incremental_selection = {
           enable = true,
@@ -52,6 +55,14 @@ return {
             node_decremental = "<bs>",
           },
         },
+
+        sync_install = true,
+
+        -- Automatically install missing parsers when entering buffer
+        -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
+        auto_install = true,
+
+        ignore_install = {},
         -- enable nvim-ts-context-commentstring plugin for commenting tsx and jsx
         context_commentstring = {
           enable = true,
