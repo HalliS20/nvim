@@ -8,10 +8,6 @@ keymap.set("i", "jk", "<ESC>", { desc = "Exit insert mode with jk" })
 --------------------------------- clear highlights --------------------------------
 keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
 
----------------------------------- Increments number -------------------------------
-keymap.set("n", "<leader>+", "<C-a>", { desc = "Increment number" }) -- increment
-keymap.set("n", "<leader>-", "<C-x>", { desc = "Decrement number" }) -- decrement
-
 -------------------------------- Window Management --------------------------------
 keymap.set("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" }) -- split window vertically
 keymap.set("n", "<leader>sh", "<C-w>s", { desc = "Split window horizontally" }) -- split window horizontally
@@ -26,6 +22,7 @@ keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer
 
 -----------Think this is a keymap to press up for last command in nvim-------
 local def_opts = { silent = false, noremap = true }
+
 vim.keymap.set({ "n", "v" }, "<CR>", ":<up>", def_opts)
 
 -----------------Keymaps for opening files in different browsers----------------
@@ -41,6 +38,14 @@ keymap.set("n", "x", '"_x')
 
 -----------------------------Better paste-------------------------------------
 vim.api.nvim_set_keymap("v", "p", '"_dP', { noremap = true })
+
+-----------------------------rename variable-------------------------------------
+vim.api.nvim_set_keymap(
+  "n",
+  "<leader>rr",
+  "<cmd>lua vim.lsp.buf.rename()<CR>",
+  { noremap = true, silent = true, desc = "Rename variable locally" }
+)
 
 ------------------------- Write all and quit all -----------------------------
 vim.cmd("command! -nargs=0 WAQ wa | qa")
