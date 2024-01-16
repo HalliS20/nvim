@@ -18,7 +18,7 @@ vim.cmd("autocmd VimEnter * hi FoldColumn guibg=bg")
 vim.cmd("autocmd ColorScheme * hi FoldColumn guibg=bg")
 
 ------------------Set Vertical Split border color------------------
-vim.cmd("set fillchars-=vert:\\|")
+
 vim.cmd("set winblend=0")
 
 -- Set the vertical split line to the same color as the background

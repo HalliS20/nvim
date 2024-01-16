@@ -20,6 +20,7 @@ return {
         lua = { "stylua" },
         python = { "isort", "black" },
       },
+      --------------- format on save (moved to none-ls) -------------------
       format_on_save = {
         lsp_fallback = true,
         async = false,
@@ -27,6 +28,7 @@ return {
       },
     })
 
+    ------------------- format key map (moved to none-ls) -------------------
     vim.keymap.set({ "n", "v" }, "<leader>mp", function()
       conform.format({
         lsp_fallback = true,
