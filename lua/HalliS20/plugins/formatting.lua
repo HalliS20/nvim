@@ -17,8 +17,9 @@ return {
         yaml = { "prettier" },
         markdown = { "prettier" },
         graphql = { "prettier" },
-        lua = { "stylua" },
+        lua = { "luaformatter" },
         python = { "isort", "black" },
+        cpp = { "clang_format" },
       },
       --------------- format on save (moved to none-ls) -------------------
       format_on_save = {
@@ -30,11 +31,7 @@ return {
 
     ------------------- format key map (moved to none-ls) -------------------
     vim.keymap.set({ "n", "v" }, "<leader>mp", function()
-      conform.format({
-        lsp_fallback = true,
-        async = false,
-        timeout_ms = 1000,
-      })
+      conform.format({ lsp_fallback = true, async = false, timeout_ms = 1000 })
     end, { desc = "Format file or range (in visual mode)" })
   end,
 }

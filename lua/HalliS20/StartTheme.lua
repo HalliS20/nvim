@@ -7,7 +7,7 @@ schemes.e = "oxocarbon"
 schemes.f = "ayu-mirage"
 schemes.g = "midnight"
 schemes.h = "moonfly"
-local scheme = schemes.h
+local scheme = schemes.e
 
 vim.cmd("colorscheme " .. scheme)
 
@@ -23,7 +23,7 @@ vim.cmd("set winblend=0")
 
 -- Set the vertical split line to the same color as the background
 function SetVertSplitHighlight()
-  vim.cmd("highlight VertSplit guifg=bg guibg=bg")
+    vim.cmd("highlight VertSplit guifg=bg guibg=bg")
 end
 
 ---------------------- Un comment code below to remove vertical split line ----------------------

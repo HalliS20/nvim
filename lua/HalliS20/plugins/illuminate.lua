@@ -17,8 +17,8 @@ return {
     },
   },
   keys = {
-    { "]]", desc = "Next Reference" },
-    { "[[", desc = "Prev Reference" },
+    { "<leader>]", desc = "Next Reference" },
+    { "<leader>[", desc = "Prev Reference" },
   },
   config = function(_, opts)
     require("illuminate").configure(opts)
@@ -32,16 +32,16 @@ return {
       })
     end
 
-    map("]]", "next")
-    map("[[", "prev")
+    map("<leader>]", "next")
+    map("<leader>[", "prev")
 
     -- also set it after loading ftplugins, since a lot overwrite [[ and ]]
     vim.api.nvim_create_autocmd("FileType", {
       group = vim.api.nvim_create_augroup("rafi_illuminate", {}),
       callback = function()
         local buffer = vim.api.nvim_get_current_buf()
-        map("]]", "next", buffer)
-        map("[[", "prev", buffer)
+        map("<leader>]", "next", buffer)
+        map("<leader>[", "prev", buffer)
       end,
     })
   end,

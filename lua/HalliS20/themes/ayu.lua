@@ -31,4 +31,9 @@ return {
             which_key = true,
         },
     },
+    config = function()
+        vim.cmd([[autocmd colorscheme ayu-mirage highlight NoiceCmdlinePopupBorder guifg=#1b1e29]])
+        vim.cmd([[autocmd colorscheme ayu-mirage highlight NoiceCmdlinePopupBorder guibg=#1b1e29]])
+        vim.cmd([[autocmd colorscheme ayu-mirage highlight NoiceCmdlinePopup guibg=#1b1e29]])
+    end,
 }

@@ -5,10 +5,13 @@ opt.relativenumber = true -- show relative line numbers
 opt.number = true -- shows absolute line number on cursor line (when relative number is on)
 
 ------------------tab code---------------------
-local tabsize = 4
-vim.api.nvim_set_option("tabstop", tabsize)
-vim.api.nvim_set_option("shiftwidth", tabsize)
-vim.api.nvim_set_option("expandtab", true)
+opt.tabstop = 4 -- number of visual spaces per TAB
+opt.softtabstop = 4 -- number of spaces in tab when editing (but tabs are 8)
+opt.shiftwidth = 4 -- number of spaces to use for autoindent
+opt.expandtab = true -- tabs are spaces
+opt.smarttab = true -- backspace deletes a 'shiftwidth' amount of spaces
+opt.shiftround = true -- round indent to multiple of 'shiftwidth'
+opt.smartindent = true -- insert indents automatically
 opt.autoindent = true -- copy indent from current line when starting new one
 -----------------------------------------------
 opt.wrap = false
