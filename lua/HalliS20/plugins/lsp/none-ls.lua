@@ -12,6 +12,7 @@ return {
                 ---------------- python ----------------
                 null_ls.builtins.formatting.black,
                 null_ls.builtins.formatting.isort,
+                null_ls.builtins.diagnostics.flake8,
 
                 ---------------- c++ ----------------
                 null_ls.builtins.formatting.clang_format,

@@ -17,7 +17,7 @@ return {
             javascriptreact = { "eslint" },
             typescriptreact = { "eslint" },
             svelte = { "eslint" },
-            python = { "pylint" },
+            python = { "flake8" },
             json = { "eslint" },
             lua = { "luacheck" },
             cpp = { "cpplint" },
