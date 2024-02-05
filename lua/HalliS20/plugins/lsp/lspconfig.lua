@@ -122,6 +122,12 @@ return {
             on_attach = on_attach,
         })
 
+        lspconfig["bashls"].setup({
+            capabilities = capabilities,
+            on_attach = on_attach,
+            filetypes = { "sh", "zsh", "bash" },
+        })
+
         -- configure graphql language server
         lspconfig["graphql"].setup({
             capabilities = capabilities,

@@ -43,3 +43,16 @@ vim.cmd([[autocmd ColorScheme * highlight! link NeoTreeSymbolicLinkTarget NvimTr
 vim.cmd([[autocmd ColorScheme * highlight! link NeoTreeRootName NvimTreeRootFolder]])
 vim.cmd([[autocmd ColorScheme * highlight! link NeoTreeDirectoryName NvimTreeOpenedFolderName]])
 vim.cmd([[autocmd ColorScheme * highlight! link NeoTreeFileNameOpened NvimTreeOpenedFile]])
+
+----------------------- set zsh files to bash syntax for treesitter ------------------------------
+vim.cmd([[autocmd BufNewFile,BufRead *.zsh set filetype=bash]])
+vim.cmd([[
+  function! SetFileType()
+    let l:firstline = getline(1)
+    if l:firstline =~ '^#!/bin/zsh'
+      set filetype=bash
+    endif
+  endfunction
+
+  autocmd BufRead,BufNewFile * call SetFileType()
+]])
