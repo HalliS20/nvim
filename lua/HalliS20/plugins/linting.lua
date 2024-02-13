@@ -7,7 +7,7 @@ return {
         ----------------------- js linters -----------------------
         local jslinter = {}
         jslinter.extrajs = { "eslint", "eslint_d" }
-        jslinter.mainjs = { "biomejs" }
+        jslinter.mainjs = { "eslint" }
         -----------------------------------------------------------
         lint.linters_by_ft = {
             css = { "stylelint" },

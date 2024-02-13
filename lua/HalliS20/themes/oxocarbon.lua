@@ -17,6 +17,7 @@ return {
         vim.cmd([[autocmd colorscheme oxocarbon highlight @string.plain guifg=#2af999]])
         vim.cmd([[autocmd colorscheme oxocarbon highlight @function guifg=coral]])
         vim.cmd([[autocmd colorscheme oxocarbon highlight @string guifg=#90EE90]])
+        vim.cmd([[autocmd colorscheme oxocarbon highlight FoldColumn guifg=#7f7f7f]])
     end,
 }
 
