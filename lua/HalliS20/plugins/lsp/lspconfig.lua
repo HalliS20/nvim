@@ -3,7 +3,7 @@ return {
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
         "hrsh7th/cmp-nvim-lsp",
-        { "antosha417/nvim-lsp-file-operations", config = true },
+        { "antosha417/nvim-lsp-file-operations", config = true }
     },
     config = function()
         -- import lspconfig plugin
@@ -32,7 +32,8 @@ return {
             keymap.set("n", "gi", "<cmd>Telescope lsp_implementations<CR>", opts) -- show lsp implementations
 
             opts.desc = "Show LSP type definitions"
-            keymap.set("n", "gt", "<cmd>Telescope lsp_type_definitions<CR>", opts) -- show lsp type definitions
+            keymap.set("n", "gt", "<cmd>Telescope lsp_type_definitions<CR>",
+                opts) -- show lsp type definitions
 
             opts.desc = "See available code actions"
             keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts) -- see available code actions, in visual mode will apply to selection
@@ -41,7 +42,8 @@ return {
             keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts) -- smart rename
 
             opts.desc = "Show buffer diagnostics"
-            keymap.set("n", "<leader>D", "<cmd>Telescope diagnostics bufnr=0<CR>", opts) -- show  diagnostics for file
+            keymap.set("n", "<leader>D",
+                "<cmd>Telescope diagnostics bufnr=0<CR>", opts) -- show  diagnostics for file
 
             opts.desc = "Show line diagnostics"
             keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts) -- show diagnostics for line
@@ -57,6 +59,32 @@ return {
 
             opts.desc = "Restart LSP"
             keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
+
+            ----------------------------------- GOTO PREVIEW -----------------------------------
+            opts.desc = "goto preview definition"
+            keymap.set("n", "gp",
+                "<cmd>lua require('goto-preview').goto_preview_definition()<CR>",
+                opts) -- show lsp definitions
+
+            opts.desc = "goto preview implementation"
+            keymap.set("n", "gpi",
+                "<cmd>lua require('goto-preview').goto_preview_implementation()<CR>",
+                opts) -- show lsp implementations
+
+            opts.desc = "goto preview type definition"
+            keymap.set("n", "gpt",
+                "<cmd>lua require('goto-preview').goto_preview_type_definition()<CR>",
+                opts) -- show lsp type definitions
+
+            opts.desc = "goto preview references"
+            keymap.set("n", "gpr",
+                "<cmd>lua require('goto-preview').goto_preview_references()<CR>",
+                opts) -- show lsp references
+
+            opts.desc = "goto preview close all"
+            keymap.set("n", "gpc",
+                "<cmd>lua require('goto-preview').close_all_win()<CR>",
+                opts) -- show lsp references
         end
 
         -- used to enable autocompletion (assign to every lsp server config)
@@ -68,7 +96,7 @@ return {
             Error = " ",
             Warn = " ",
             Hint = "󰠠 ",
-            Info = " ",
+            Info = " "
         }
         for type, icon in pairs(signs) do
             local hl = "DiagnosticSign" .. type
@@ -78,25 +106,25 @@ return {
         -- configure html server
         lspconfig["html"].setup({
             capabilities = capabilities,
-            on_attach = on_attach,
+            on_attach = on_attach
         })
 
         -- configure typescript server with plugin
         lspconfig["tsserver"].setup({
             capabilities = capabilities,
-            on_attach = on_attach,
+            on_attach = on_attach
         })
 
         -- configure css server
         lspconfig["cssls"].setup({
             capabilities = capabilities,
-            on_attach = on_attach,
+            on_attach = on_attach
         })
 
         -- configure tailwindcss server
         lspconfig["tailwindcss"].setup({
             capabilities = capabilities,
-            on_attach = on_attach,
+            on_attach = on_attach
         })
 
         -- configure svelte server
@@ -109,23 +137,24 @@ return {
                     pattern = { "*.js", "*.ts" },
                     callback = function(ctx)
                         if client.name == "svelte" then
-                            client.notify("$/onDidChangeTsOrJsFile", { uri = ctx.file })
+                            client.notify("$/onDidChangeTsOrJsFile",
+                                { uri = ctx.file })
                         end
-                    end,
+                    end
                 })
-            end,
+            end
         })
 
         -- configure prisma orm server
         lspconfig["prismals"].setup({
             capabilities = capabilities,
-            on_attach = on_attach,
+            on_attach = on_attach
         })
 
         lspconfig["bashls"].setup({
             capabilities = capabilities,
             on_attach = on_attach,
-            filetypes = { "sh", "zsh", "bash" },
+            filetypes = { "sh", "zsh", "bash" }
         })
 
         -- configure graphql language server
@@ -133,12 +162,8 @@ return {
             capabilities = capabilities,
             on_attach = on_attach,
             filetypes = {
-                "graphql",
-                "gql",
-                "svelte",
-                "typescriptreact",
-                "javascriptreact",
-            },
+                "graphql", "gql", "svelte", "typescriptreact", "javascriptreact"
+            }
         })
 
         -- configure emmet language server
@@ -146,49 +171,41 @@ return {
             capabilities = capabilities,
             on_attach = on_attach,
             filetypes = {
-                "html",
-                "typescriptreact",
-                "javascriptreact",
-                "css",
-                "sass",
-                "scss",
-                "less",
-                "svelte",
-            },
+                "html", "typescriptreact", "javascriptreact", "css", "sass",
+                "scss", "less", "svelte"
+            }
         })
 
         -- configure python server
         lspconfig["pyright"].setup({
             capabilities = capabilities,
             on_attach = on_attach,
-            filetypes = { "python", "py", "pyc", "pyo", "pyd" },
+            filetypes = { "python", "py", "pyc", "pyo", "pyd" }
         })
 
         lspconfig["clangd"].setup({
             cmd = {
-                "clangd",
-                "--background-index",
-                "--suggest-missing-includes",
-                "--clang-tidy",
-                "--header-insertion=iwyu",
+                "clangd", "--background-index", "--suggest-missing-includes",
+                "--clang-tidy", "--header-insertion=iwyu"
             },
             filetypes = { "c", "cpp", "objc", "objcpp", "hpp", "h" },
             root_dir = function(fname)
-                return lspconfig.util.root_pattern("compile_commands.json", "compile_flags.txt", ".git")(fname)
-                    or lspconfig.util.path.dirname(fname)
+                return lspconfig.util.root_pattern("compile_commands.json",
+                    "compile_flags.txt", ".git")(
+                    fname) or lspconfig.util.path.dirname(fname)
             end,
             init_options = {
                 clangdFileStatus = true,
                 usePlaceholders = true,
                 completeUnimported = true,
-                semanticHighlighting = true,
+                semanticHighlighting = true
             },
             on_attach = on_attach,
             capabilities = {
                 textDocument = {
-                    completion = { completionItem = { snippetSupport = true } },
+                    completion = { completionItem = { snippetSupport = true } }
                 },
-                offsetEncoding = { "utf-16" }, -- Set offset encoding here
+                offsetEncoding = { "utf-16" } -- Set offset encoding here
             },
             flags = { debounce_text_changes = 150 },
             settings = {
@@ -198,10 +215,10 @@ return {
                         BasedOnStyle = "LLVM",
                         UseTab = true,
                         IndentWidth = 4,
-                        TabWidth = 4,
-                    }, -- Set tab size to 4 here
-                },
-            },
+                        TabWidth = 4
+                    } -- Set tab size to 4 here
+                }
+            }
         })
         -- configure lua server (with special settings)
         lspconfig["lua_ls"].setup({
@@ -215,11 +232,11 @@ return {
                         -- make language server aware of runtime files
                         library = {
                             [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-                            [vim.fn.stdpath("config") .. "/lua"] = true,
-                        },
-                    },
-                },
-            },
+                            [vim.fn.stdpath("config") .. "/lua"] = true
+                        }
+                    }
+                }
+            }
         })
-    end,
+    end
 }

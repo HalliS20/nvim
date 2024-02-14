@@ -18,7 +18,6 @@ return {
                 null_ls.builtins.formatting.clang_format,
 
                 ---------------- js,html,css and web ----------------
-                null_ls.builtins.formatting.stylua,
                 null_ls.builtins.formatting.prettierd,
                 null_ls.builtins.formatting.eslint_d,
                 null_ls.builtins.diagnostics.eslint,

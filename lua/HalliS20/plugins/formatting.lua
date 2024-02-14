@@ -18,22 +18,23 @@ return {
                 yaml = { "prettier" },
                 markdown = { "prettier" },
                 graphql = { "prettier" },
-                lua = { "luaformatter" },
+                lua = { "lua_format" },
                 python = { "isort", "black" },
                 cpp = { "clang_format" },
-                c = { "clang_format" },
+                c = { "clang_format" }
             },
             --------------- format on save (moved to none-ls) -------------------
             format_on_save = {
                 lsp_fallback = true,
                 async = false,
-                timeout_ms = 1000,
-            },
+                timeout_ms = 1000
+            }
         })
 
         ------------------- format key map (moved to none-ls) -------------------
         vim.keymap.set({ "n", "v" }, "<leader>mp", function()
-            conform.format({ lsp_fallback = true, async = false, timeout_ms = 1000 })
+            conform.format(
+                { lsp_fallback = true, async = false, timeout_ms = 1000 })
         end, { desc = "Format file or range (in visual mode)" })
-    end,
+    end
 }
