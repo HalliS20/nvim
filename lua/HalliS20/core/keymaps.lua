@@ -70,3 +70,13 @@ vim.api.nvim_set_keymap(
     { expr = true, noremap = true, silent = true }
 )
 -- Move to next line on right arrow at end of line
+--
+---------------------------- close all folds -----------------------------------
+vim.api.nvim_set_keymap("n", "<leader>z", "zMza", { noremap = true, silent = true })
+
+-- Setting foldmethod to use Tree-sitter
+-- vim.api.nvim_command('set foldmethod=expr')
+-- vim.api.nvim_command('set foldexpr=nvim_treesitter#foldexpr()')
+--
+-- -- Keybinding to toggle folds with <leader>z
+-- vim.api.nvim_set_keymap('n', '<leader>z', ':set foldlevel=0<CR>', { noremap = true, silent = true })

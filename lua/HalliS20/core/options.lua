@@ -45,14 +45,36 @@ vim.cmd([[autocmd ColorScheme * highlight! link NeoTreeDirectoryName NvimTreeOpe
 vim.cmd([[autocmd ColorScheme * highlight! link NeoTreeFileNameOpened NvimTreeOpenedFile]])
 
 ----------------------- set zsh files to bash syntax for treesitter ------------------------------
--- vim.cmd([[autocmd BufNewFile,BufRead *.zsh set filetype=bash]])
--- vim.cmd([[
---   function! SetFileType()
---     let l:firstline = getline(1)
---     if l:firstline =~ '^#!/bin/zsh'
---       set filetype=bash
---     endif
---   endfunction
---
---   autocmd BufRead,BufNewFile * call SetFileType()
--- ]])
+vim.cmd([[autocmd BufNewFile,BufRead *.zsh set filetype=bash]])
+vim.cmd([[
+  function! SetFileType()
+    let l:firstline = getline(1)
+    if l:firstline =~ '^#!/bin/zsh'
+      set filetype=bash
+    endif
+  endfunction
+
+  autocmd BufRead,BufNewFile * call SetFileType()
+]])
+
+----------------------- buffer refresh ------------------------------
+local function refreshDiagnostics()
+    -- Get the current buffer number
+    local bufnr = vim.api.nvim_get_current_buf()
+
+    -- Trigger LSP diagnostics for this buffer
+    vim.lsp.diagnostic.clear(bufnr)
+    vim.lsp.diagnostic.get(bufnr)
+    vim.lsp.buf_request(bufnr, 'textDocument/publishDiagnostics', { uri = vim.uri_from_bufnr(bufnr) }, function() end)
+end
+
+-- Function to periodically refresh diagnostics
+local function scheduleDiagnosticsRefresh()
+    vim.defer_fn(function()
+        refreshDiagnostics()
+        scheduleDiagnosticsRefresh() -- Reschedule itself
+    end, 30000)                      -- Time in milliseconds
+end
+
+-- Start the scheduled diagnostics refresh
+scheduleDiagnosticsRefresh()
