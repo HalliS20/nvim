@@ -13,7 +13,6 @@ return {
 
             -- configure treesitter
             treesitter.setup({
-                sync_install = false,
                 auto_install = true,
                 highlight = { enable = true },
                 -- enable indentation
@@ -21,9 +20,6 @@ return {
                 -- enable autotagging (w/ nvim-ts-autotag plugin)
                 autotag = { enable = true },
                 -- ensure these language parsers are installed
-                fold = {
-                    enable = true,
-                },
                 ensure_installed = {
                     "json",
                     "javascript",

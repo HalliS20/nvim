@@ -72,7 +72,6 @@ vim.api.nvim_set_keymap(
 -- Move to next line on right arrow at end of line
 --
 ---------------------------- close all folds -----------------------------------
-vim.api.nvim_set_keymap("n", "<leader>z", "zMza", { noremap = true, silent = true })
 
 -- Setting foldmethod to use Tree-sitter
 -- vim.api.nvim_command('set foldmethod=expr')
