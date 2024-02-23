@@ -16,10 +16,10 @@ return {
                 html = { "prettier" },
                 json = { "prettier", "prettierd", "eslint" },
                 yaml = { "prettier" },
-                markdown = { "prettier" },
+                markdown = { "markdownlint" },
                 graphql = { "prettier" },
                 lua = { "lua_format" },
-                python = { "isort", "black" },
+                python = { "autopep8", "black" },
                 cpp = { "clang_format" },
                 c = { "clang_format" }
             },

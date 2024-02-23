@@ -151,6 +151,12 @@ return {
             on_attach = on_attach
         })
 
+        -- setup markdown marksman server
+        lspconfig["marksman"].setup({
+            capabilities = capabilities,
+            on_attach = on_attach
+        })
+
         lspconfig["bashls"].setup({
             capabilities = capabilities,
             on_attach = on_attach,
