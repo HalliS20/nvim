@@ -16,15 +16,22 @@ return {
             typescript = { "eslint" },
             javascriptreact = { "eslint" },
             typescriptreact = { "eslint" },
+            tsx = { "eslint" },
+            jsx = { "eslint" },
             svelte = { "eslint" },
             python = { "flake8" },
             json = { "eslint" },
             lua = { "luacheck" },
+            c = { "cpplint" },
+            h = { "cpplint" },
             cpp = { "cpplint" },
+            hpp = { "cpplint" },
             markdown = { "markdownlint" },
         }
 
+
         local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
+        require('lint').linters.cpplint.args = { '--filter=-copyright*' }
 
         vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
             group = lint_augroup,

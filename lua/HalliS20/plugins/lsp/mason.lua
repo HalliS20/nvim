@@ -48,6 +48,7 @@ return {
 
         mason_tool_installer.setup({
             ensure_installed = {
+                "ts-standard",   -- js linter
                 "prettier",      -- prettier formatter
                 "stylua",        -- lua formatter
                 "isort",         -- python formatter

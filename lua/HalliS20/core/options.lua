@@ -14,10 +14,11 @@ opt.shiftround = true  -- round indent to multiple of 'shiftwidth'
 opt.smartindent = true -- insert indents automatically
 opt.autoindent = true  -- copy indent from current line when starting new one
 -----------------------------------------------
-opt.wrap = false
+opt.wrap = true        -- set wraping to true
 opt.ignorecase = true
 opt.smartcase = true
 opt.cursorline = true
+
 
 opt.termguicolors = true
 opt.background = "dark"
@@ -56,25 +57,3 @@ vim.cmd([[
 
   autocmd BufRead,BufNewFile * call SetFileType()
 ]])
-
------------------------ buffer refresh ------------------------------
-local function refreshDiagnostics()
-    -- Get the current buffer number
-    local bufnr = vim.api.nvim_get_current_buf()
-
-    -- Trigger LSP diagnostics for this buffer
-    vim.lsp.diagnostic.clear(bufnr)
-    vim.lsp.diagnostic.get(bufnr)
-    vim.lsp.buf_request(bufnr, 'textDocument/publishDiagnostics', { uri = vim.uri_from_bufnr(bufnr) }, function() end)
-end
-
--- Function to periodically refresh diagnostics
-local function scheduleDiagnosticsRefresh()
-    vim.defer_fn(function()
-        refreshDiagnostics()
-        scheduleDiagnosticsRefresh() -- Reschedule itself
-    end, 30000)                      -- Time in milliseconds
-end
-
--- Start the scheduled diagnostics refresh
-scheduleDiagnosticsRefresh()

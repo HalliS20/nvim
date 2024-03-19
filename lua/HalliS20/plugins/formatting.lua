@@ -10,6 +10,8 @@ return {
                 typescript = { "prettier" },
                 javascriptreact = { "prettier" },
                 typescriptreact = { "prettier" },
+                tsx = { "prettier" },
+                jsx = { "prettier" },
                 svelte = { "prettier" },
                 css = { "prettier" },
                 less = { "prettier" },
@@ -21,7 +23,9 @@ return {
                 lua = { "lua_format" },
                 python = { "autopep8", "black" },
                 cpp = { "clang_format" },
-                c = { "clang_format" }
+                c = { "clang_format" },
+                h = { "clang_format" },
+                hpp = { "clang_format" }
             },
             --------------- format on save (moved to none-ls) -------------------
             format_on_save = {
