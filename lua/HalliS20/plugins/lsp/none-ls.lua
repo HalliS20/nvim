@@ -7,7 +7,7 @@ return {
 
         null_ls.setup({
             sources = {
-                null_ls.builtins.formatting.lua_format,
+                -- null_ls.builtins.formatting.lua_format,
 
                 ---------------- python ----------------
                 -- null_ls.builtins.formatting.black,
@@ -21,7 +21,7 @@ return {
                 -- null_ls.builtins.diagnostics.clangd,
 
                 ---------------- js,html,css and web ----------------
-                null_ls.builtins.formatting.prettierd,
+                -- null_ls.builtins.formatting.prettierd,
                 -- null_ls.builtins.formatting.eslint_d,
                 -- null_ls.builtins.diagnostics.eslint,
                 -- null_ls.builtins.diagnostics.eslint_d,
