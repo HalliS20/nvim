@@ -183,6 +183,15 @@ return {
             }
         })
 
+        -- elixir config
+        --Location:  /opt/homebrew/Cellar/elixir-ls/0.21.2/bin
+        lspconfig["elixirls"].setup({
+            capabilities = capabilities,
+            on_attach = on_attach,
+            filetypes = { "elixir" },
+            cmd = { "elixir-ls" }
+        })
+
         -- configure python server
         lspconfig["pyright"].setup({
             capabilities = capabilities,

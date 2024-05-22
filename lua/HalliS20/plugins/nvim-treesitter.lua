@@ -43,6 +43,11 @@ return {
                     "bash",
                     "cmake",
                     "rust",
+                    "python",
+                    "elixir",
+                    "c",
+                    "heex",
+                    "eex",
                 },
                 incremental_selection = {
                     enable = true,

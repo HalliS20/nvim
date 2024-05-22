@@ -1,11 +1,7 @@
 return {
-  "nvimdev/indentmini.nvim",
-  event = "BufEnter",
-  config = function()
-    require("indentmini").setup({
-      char = "",
-    })
-    -- use comment color
-    vim.cmd.highlight("default link IndentLine Comment")
-  end,
+    -- old indentlines: "nvimdev/indentmini.nvim",
+    "lukas-reineke/indent-blankline.nvim",
+    main = "ibl",
+    opts = {}
+
 }
