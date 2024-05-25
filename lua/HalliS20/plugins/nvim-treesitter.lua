@@ -13,6 +13,9 @@ return {
 
             -- configure treesitter
             treesitter.setup({
+                sync_install = true,
+                ignore_install = {},
+                modules = {},
                 auto_install = true,
                 highlight = { enable = true },
                 -- enable indentation
