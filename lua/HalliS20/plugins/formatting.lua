@@ -27,6 +27,7 @@ return {
                 h = { "clang_format" },
                 hpp = { "clang_format" },
                 elixir = { "mixfmt" },
+                go = { "gofumpt" },
             },
             --------------- format on save (moved to none-ls) -------------------
             format_on_save = {

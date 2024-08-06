@@ -38,6 +38,7 @@ return {
                 "prismals",
                 "pyright",
                 "eslint",
+                "gopls",
                 "clangd", -- c/c++ language server
                 "bashls",
                 "marksman",
@@ -66,6 +67,7 @@ return {
                 "cpplint",
                 "luacheck",
                 "markdownlint",
+                "gofumpt",
             },
         })
     end,

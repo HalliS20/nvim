@@ -199,6 +199,13 @@ return {
             filetypes = { "python", "py", "pyc", "pyo", "pyd" }
         })
 
+        -- config for golang server
+        lspconfig["gopls"].setup({
+            capabilities = capabilities,
+            on_attach = on_attach,
+            filetypes = { "go" }
+        })
+
         lspconfig["clangd"].setup({
             cmd = {
                 "clangd", "--background-index", "--suggest-missing-includes",
